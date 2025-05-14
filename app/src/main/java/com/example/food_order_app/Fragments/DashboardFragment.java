@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,6 +32,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 // DashboardFragment.java
@@ -39,8 +41,10 @@ public class DashboardFragment extends Fragment {
     private RecyclerView rcv;
     private DashBoardAdapter adapter;
     private List<FoodItem> foodItemList;
+    private List<FoodItem> filteredFoodItemList; // Danh sách lọc
     private Button btnAddNewFood;
     private Spinner spinnerCategory;
+    private Spinner spinnerCategoryFilter; // Spinner lọc danh mục
     private TextView tvItemCount;
     private DatabaseReference dbFoodItems;
 
@@ -49,6 +53,7 @@ public class DashboardFragment extends Fragment {
         super.onCreate(savedInstanceState);
         dbFoodItems = FirebaseDatabase.getInstance().getReference("FoodItems");
         foodItemList = new ArrayList<>();
+        filteredFoodItemList = new ArrayList<>();
     }
 
     @Override
@@ -57,6 +62,7 @@ public class DashboardFragment extends Fragment {
         initializeViews(v);
         setupRecyclerView();
         setupButtonListeners();
+        setupCategoryFilterSpinner(); // Thiết lập Spinner lọc
         loadFoodItems();
         return v;
     }
@@ -65,6 +71,7 @@ public class DashboardFragment extends Fragment {
         rcv = v.findViewById(R.id.recyclerView);
         btnAddNewFood = v.findViewById(R.id.btnAddNewFood);
         tvItemCount = v.findViewById(R.id.tvItemCount);
+        spinnerCategoryFilter = v.findViewById(R.id.spinnerCategoryFilter); // Khởi tạo Spinner
     }
 
     private void setupRecyclerView() {
@@ -85,7 +92,7 @@ public class DashboardFragment extends Fragment {
     }
 
     private void updateItemCount() {
-        tvItemCount.setText("Total Food Items: " + foodItemList.size()); // Update the TextView with the size of the list
+        tvItemCount.setText("Total Food Items: " + filteredFoodItemList.size()); // Update the TextView with the size of the list
     }
 
     private void setupButtonListeners() {
@@ -93,6 +100,48 @@ public class DashboardFragment extends Fragment {
             Intent intent = new Intent(getActivity(), AddNewFoodActivity.class);
             startActivityForResult(intent, 1);
         });
+    }
+
+    private void setupCategoryFilterSpinner() {
+        // Tạo danh sách danh mục với tùy chọn "All"
+        List<String> categories = new ArrayList<>();
+        categories.add("All");
+        categories.addAll(Arrays.asList(getResources().getStringArray(R.array.food_categories)));
+
+        // Thiết lập Adapter cho Spinner
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(),
+                android.R.layout.simple_spinner_item, categories);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerCategoryFilter.setAdapter(adapter);
+
+        // Xử lý sự kiện khi chọn danh mục
+        spinnerCategoryFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedCategory = parent.getItemAtPosition(position).toString();
+                filterFoodItems(selectedCategory); // Lọc sản phẩm theo danh mục
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                filterFoodItems("All"); // Mặc định hiển thị tất cả
+            }
+        });
+    }
+
+    private void filterFoodItems(String category) {
+        filteredFoodItemList.clear();
+        if (category.equals("All")) {
+            filteredFoodItemList.addAll(foodItemList); // Hiển thị tất cả sản phẩm
+        } else {
+            for (FoodItem item : foodItemList) {
+                if (item.getCategory().equals(category)) {
+                    filteredFoodItemList.add(item); // Chỉ thêm sản phẩm thuộc danh mục được chọn
+                }
+            }
+        }
+        adapter.setData(filteredFoodItemList); // Cập nhật Adapter
+        updateItemCount(); // Cập nhật số lượng
     }
 
     private void showDeleteConfirmationDialog(FoodItem foodItem) {
@@ -125,8 +174,12 @@ public class DashboardFragment extends Fragment {
                     foodItem.setFoodId(dataSnapshot.getKey());
                     foodItemList.add(foodItem);
                 }
-                adapter.setData(foodItemList);
-                updateItemCount();
+                // Cập nhật danh sách lọc dựa trên danh mục hiện tại
+                String selectedCategory = spinnerCategoryFilter.getSelectedItem() != null
+                        ? spinnerCategoryFilter.getSelectedItem().toString() : "All";
+                filterFoodItems(selectedCategory);
+//                adapter.setData(foodItemList);
+//                updateItemCount();
             }
 
             @Override
