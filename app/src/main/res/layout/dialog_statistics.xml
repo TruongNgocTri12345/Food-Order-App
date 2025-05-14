@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@android:color/white">
+
+    <TextView
+        android:id="@+id/statistics_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select Statistics"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:paddingBottom="16dp"
+        android:textColor="@android:color/black" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_by_day"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="By day"
+        app:backgroundTint="@color/colorPrimary"
+        android:textColor="@android:color/white"
+        android:padding="14dp"
+        android:layout_marginBottom="8dp"
+        app:cornerRadius="8dp"
+        app:elevation="4dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_by_month"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="By month"
+        app:backgroundTint="@color/colorPrimary"
+        android:textColor="@android:color/white"
+        android:padding="14dp"
+        android:layout_marginBottom="8dp"
+        app:cornerRadius="8dp"
+        app:elevation="4dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_by_year"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="By year"
+        app:backgroundTint="@color/colorPrimary"
+        android:textColor="@android:color/white"
+        android:padding="14dp"
+        android:layout_marginBottom="8dp"
+        app:cornerRadius="8dp"
+        app:elevation="4dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        app:backgroundTint="@android:color/darker_gray"
+        android:textColor="@android:color/white"
+        android:padding="14dp"
+        app:cornerRadius="8dp"
+        app:elevation="2dp" />
+</LinearLayout>

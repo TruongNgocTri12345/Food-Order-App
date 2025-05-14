@@ -1,0 +1,11 @@
+<resources>
+
+    <style name="ProfileButtonStyle">
+        <item name="android:layout_width">120dp</item>
+        <item name="android:layout_height">120dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:background">#FB6236</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+</resources>
