@@ -55,27 +55,27 @@ public class FoodDetailActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_food_detail);
 
-        initUI();
-        strFoodId = getIntent().getStringExtra("foodId");
+        initUI(); // Khởi tạo giao diện
+        strFoodId = getIntent().getStringExtra("foodId"); // Lấy ID món ăn từ Intent
         strFoodPrice = getIntent().getLongExtra("foodPrice", 0);
         if (strFoodId == null) {
             showToast("Invalid food ID");
             finish();
             return;
         }
-        setupRecyclerView();
-        loadContent();
+        setupRecyclerView();  // Thiết lập RecyclerView cho danh sách đánh giá
+        loadContent(); // Tải nội dung món ăn
 
         favoriteIcon.setOnClickListener(v -> {
             if (foodItem != null) {
-                toggleFavorite(foodItem);
+                toggleFavorite(foodItem); // Thêm/xóa khỏi danh sách yêu thích
             } else {
                 showToast("Food item is not available.");
             }
         });
         findViewById(R.id.btnBack).setOnClickListener(v -> finish());
-        findViewById(R.id.btn_add_comment).setOnClickListener(v -> addComment());
-        findViewById(R.id.btn_add_to_cart).setOnClickListener(v -> addToCart());
+        findViewById(R.id.btn_add_comment).setOnClickListener(v -> addComment());   // thêm bình luận
+        findViewById(R.id.btn_add_to_cart).setOnClickListener(v -> addToCart());   // thêm vào giỏ hàng
     }
 
     private void toggleFavorite(FoodItem foodItem) {
@@ -126,11 +126,13 @@ public class FoodDetailActivity extends AppCompatActivity {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     boolean isExists = false;
+                    // Kiểm tra nếu món ăn đã có trong giỏ
                     if (snapshot.exists()) {
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                             Cart cart = dataSnapshot.getValue(Cart.class);
                             cart.setCartId(dataSnapshot.getKey());
                             if (cart != null && cart.getFoodId().equals(strFoodId)) {
+                                // Tăng số lượng nếu đã có
                                 int newQuantity = cart.getQuantity() + 1;
                                 dataSnapshot.getRef().child("quantity").setValue(newQuantity);
                                 dataSnapshot.getRef().child("total_price").setValue(strFoodPrice * newQuantity);
@@ -141,6 +143,7 @@ public class FoodDetailActivity extends AppCompatActivity {
                         }
                     }
 
+                    // Nếu chưa có -> thêm mới
                     if (!isExists) {
                         Cart newCart = new Cart(userId, strFoodPrice, 1, strFoodId);
                         dbCart.push().setValue(newCart).addOnCompleteListener(task -> {
@@ -201,10 +204,10 @@ public class FoodDetailActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     foodItem = snapshot.getValue(FoodItem.class);
-                    displayFoodDetails(snapshot);
-                    loadReview();
+                    displayFoodDetails(snapshot);  // Hiển thị chi tiết món ăn
+                    loadReview();  // Tải đánh giá
                     setupRecyclerView();
-                    checkIfFavorite(strFoodId);
+                    checkIfFavorite(strFoodId);  // Kiểm tra trạng thái yêu thích
                     if (foodItem != null && foodItem.getFoodId() != null) {
                         checkIfFavorite(snapshot.getKey());
                     }
@@ -293,7 +296,7 @@ public class FoodDetailActivity extends AppCompatActivity {
 
     private void addComment() {
         dbReview = FirebaseDatabase.getInstance().getReference().child("Reviews").child(strFoodId);
-        dialog = createCommentDialog();
+        dialog = createCommentDialog();  // Tạo dialog nhập đánh giá
         dialog.show();
     }
 
@@ -312,6 +315,7 @@ public class FoodDetailActivity extends AppCompatActivity {
         return builder.create();
     }
 
+    // Tạo và lưu đánh giá mới
     private void submitComment(EditText etComment, RatingBar ratingBar, String userId) {
         String comment = etComment.getText().toString();
         float rating = ratingBar.getRating();
@@ -321,6 +325,7 @@ public class FoodDetailActivity extends AppCompatActivity {
             return;
         }
 
+        // Tạo và lưu đánh giá mới
         Review newReview = new Review(comment, rating, strFoodId, userId);
         dbReview.push().setValue(newReview).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
@@ -338,13 +343,16 @@ public class FoodDetailActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 float totalRating = 0.0f;
                 int count = 0;
+                // Tính tổng điểm
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     totalRating += dataSnapshot.getValue(Review.class).getRating();
                     count++;
                 }
+
+                // Tính điểm trung bình và cập nhật
                 float averageRating = (count > 0) ? totalRating / count : newRating;
                 dbFoodItem.child("rating").setValue(averageRating);
-                loadContent();
+                loadContent();  // Tải lại để cập nhật giao diện
                 setupRecyclerView();
             }
 
