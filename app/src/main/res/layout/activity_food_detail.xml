@@ -106,7 +106,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
-                android:text="Customer Reviews:"
+                android:text="Đánh giá của khách hàng:"
                 android:textSize="17sp" />
 
             <ImageButton
@@ -130,7 +130,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="No reviews yet"
+                android:text="Chưa có đánh giá nào"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="14sp"
                 android:visibility="gone" />
@@ -147,6 +147,6 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="10dp"
         android:backgroundTint="@color/orange_dark"
-        android:text="Add to cart"
+        android:text="Thêm vào giỏ hàng"
         android:textColor="@android:color/white" />
 </RelativeLayout>
