@@ -9,12 +9,7 @@
     android:fitsSystemWindows="true"
     tools:context=".Activities.LoginActivity">
 
-
-    <!-- Title -->
-
-    <!-- Login title -->
-
-    <!-- Instruction text -->
+    <!-- Tiêu đề và hướng dẫn -->
     <TextView
         android:id="@+id/login_title"
         android:layout_width="wrap_content"
@@ -24,11 +19,66 @@
         android:textColor="@android:color/black"
         android:textSize="25sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <TextView
+        android:id="@+id/instruction_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Please enter your credentials"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/login_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Ô nhập email -->
+    <EditText
+        android:id="@+id/txt_email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/edit_text_background"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:padding="16dp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/instruction_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.9" />
+
+    <!-- Ô nhập mật khẩu -->
+    <EditText
+        android:id="@+id/txt_password"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edit_text_background"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:padding="16dp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/txt_email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.9" />
+
+    <!-- Hiện/ẩn mật khẩu -->
+    <ImageButton
+        android:id="@+id/btn_toggle_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:background="@null"
+        android:src="@drawable/ic_visibility_off"
+        app:layout_constraintTop_toTopOf="@id/txt_password"
+        app:layout_constraintEnd_toEndOf="@id/txt_password" />
+
+    <!-- Quên mật khẩu -->
     <TextView
         android:id="@+id/txt_forgot_password"
         android:layout_width="wrap_content"
@@ -39,94 +89,78 @@
         android:textColor="@color/orange"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:clickable="true"
         android:focusable="true"
-        app:layout_constraintEnd_toEndOf="@id/txt_password"
-        app:layout_constraintTop_toBottomOf="@id/txt_password" />
+        app:layout_constraintTop_toBottomOf="@id/txt_password"
+        app:layout_constraintEnd_toEndOf="@id/txt_password" />
 
-    <TextView
-        android:id="@+id/instruction_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="Please enter your credentials"
-        android:textColor="@android:color/black"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/login_title" />
-
-    <!-- Email Input -->
-    <EditText
-        android:id="@+id/txt_email"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/edit_text_background"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/instruction_text"
-        app:layout_constraintWidth_percent="0.9" />
-
-    <!-- Password Input -->
-    <EditText
-        android:id="@+id/txt_password"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/edit_text_background"
-        android:drawablePadding="8dp"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:textColor="@color/black"
-        android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_email"
-        app:layout_constraintWidth_percent="0.9" />
-
-    <!-- Toggle Password Visibility -->
-    <ImageButton
-        android:id="@+id/btn_toggle_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@null"
-        android:src="@drawable/ic_visibility_off"
-        app:layout_constraintEnd_toEndOf="@id/txt_password"
-        app:layout_constraintTop_toTopOf="@id/txt_password" />
-
-    <!-- Login Button -->
+    <!-- Nút đăng nhập -->
     <Button
         android:id="@+id/btn_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:backgroundTint="@color/orange"
-        android:text="Login"
+        android:text="Đăng nhập"
         android:textColor="@android:color/white"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_forgot_password"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_password"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintWidth_percent="0.9" />
 
-    <!-- Back Button -->
+    <!-- Text “Hoặc đăng nhập bằng” -->
+    <TextView
+        android:id="@+id/social_login_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Hoặc đăng nhập bằng"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/btn_login"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Biểu tượng Google và Facebook -->
+    <LinearLayout
+        android:id="@+id/social_login_icons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/social_login_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageButton
+            android:id="@+id/btn_login_google"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="24dp"
+            android:background="@null"
+            android:src="@drawable/icon_google"
+            android:contentDescription="Đăng nhập bằng Google" />
+
+        <ImageButton
+            android:id="@+id/btn_login_facebook"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@null"
+            android:src="@drawable/icon_facebook"
+            android:contentDescription="Đăng nhập bằng Facebook" />
+    </LinearLayout>
+
+    <!-- Nút quay lại -->
     <ImageButton
         android:id="@+id/btn_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
-        app:srcCompat="@drawable/ic_arrow_back_30"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="20dp"
-        tools:layout_editor_absoluteY="14dp" />
+        android:src="@drawable/ic_arrow_back_30"
+        android:contentDescription="Back"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="12dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
