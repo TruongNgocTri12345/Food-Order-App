@@ -30,7 +30,7 @@
 
         <activity
             android:name=".Activities.FoodDetailActivity"
-            android:exported="false" />
+            android:exported="false"
         <activity
             android:name=".Activities.ChangePasswordActivity"
             android:exported="false"
@@ -68,7 +68,7 @@
         <activity
             android:name=".Activities.OrderActivity"
             android:exported="false" />
-        
+
         <activity
             android:name=".Activities.HomeActivity"
             android:exported="true" />
