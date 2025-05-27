@@ -8,12 +8,14 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -67,6 +69,9 @@ public class AddNewFoodActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_add_new_food);
+
+        // Khởi tạo Firebase Storage
+        storageReference = FirebaseStorage.getInstance().getReference();
 
         // Khởi tạo các view
         etFoodName = findViewById(R.id.etFoodName);
@@ -130,70 +135,49 @@ public class AddNewFoodActivity extends AppCompatActivity {
 
 
     private void uploadImage(Uri imageUri) {
-        try {
-            progressDialog = new ProgressDialog(AddNewFoodActivity.this);
-            progressDialog.setMessage("Uploading to Imgur...");
-            progressDialog.show();
+        ProgressBar progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
 
-            InputStream inputStream = getContentResolver().openInputStream(imageUri);
-            byte[] imageBytes = getBytes(inputStream);
-            String base64Image = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+        String fileName = "food_images/" + System.currentTimeMillis() + ".jpg";
+        StorageReference imageRef = storageReference.child(fileName);
 
-            OkHttpClient client = new OkHttpClient();
-
-            RequestBody requestBody = new FormBody.Builder()
-                    .add("image", base64Image)
-                    .build();
-
-            Request request = new Request.Builder()
-                    .url("https://api.imgur.com/3/image")
-                    .addHeader("Authorization", "Client-ID bc28a0fd88a76eb")
-                    .post(requestBody)
-                    .build();
-
-            client.newCall(request).enqueue(new Callback() {
-                @Override
-                public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                    runOnUiThread(() -> {
-                        progressDialog.dismiss();
-                        Toast.makeText(AddNewFoodActivity.this, "Upload failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        imageRef.putFile(imageUri)
+                .addOnSuccessListener(taskSnapshot -> {
+                    imageRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                        imageUrl = uri.toString();
+                        progressBar.setVisibility(View.GONE);
+                        uploadFood();
+                    }).addOnFailureListener(e -> {
+                        progressBar.setVisibility(View.GONE);
+                        Toast.makeText(AddNewFoodActivity.this, "Lấy URL thất bại: " + e.getMessage(), Toast.LENGTH_LONG).show();
                     });
-                }
-
-                @Override
-                public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                    runOnUiThread(() -> progressDialog.dismiss());
-                    if (response.isSuccessful()) {
-                        String responseBody = response.body().string();
-                        try {
-                            JSONObject json = new JSONObject(responseBody);
-                            imageUrl = json.getJSONObject("data").getString("link");
-                            runOnUiThread(() -> uploadFood()); // tiếp tục upload món ăn
-                        } catch (JSONException e) {
-                            runOnUiThread(() -> Toast.makeText(AddNewFoodActivity.this, "Parse error: " + e.getMessage(), Toast.LENGTH_SHORT).show());
-                        }
-                    } else {
-                        runOnUiThread(() -> Toast.makeText(AddNewFoodActivity.this, "Upload failed: " + response.message(), Toast.LENGTH_SHORT).show());
-                    }
-                }
-            });
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
+                })
+                .addOnFailureListener(e -> {
+                    progressBar.setVisibility(View.GONE);
+                    Toast.makeText(AddNewFoodActivity.this, "Tải ảnh thất bại: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                });
     }
 
     private byte[] getBytes(InputStream inputStream) throws IOException {
-        ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
-        int bufferSize = 1024;
-        byte[] buffer = new byte[bufferSize];
+        try {
+            // Decode và resize ảnh
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inSampleSize = 2; // Giảm kích thước ảnh
+            Bitmap bitmap = BitmapFactory.decodeStream(inputStream, null, options);
 
-        int len;
-        while ((len = inputStream.read(buffer)) != -1) {
-            byteBuffer.write(buffer, 0, len);
+            // Resize thêm và nén
+            Bitmap resizedBitmap = Bitmap.createScaledBitmap(bitmap, 800, 800, true);
+            ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
+            resizedBitmap.compress(Bitmap.CompressFormat.JPEG, 80, byteBuffer);
+
+            byte[] result = byteBuffer.toByteArray();
+            if (result.length > 10 * 1024 * 1024) { // Kiểm tra giới hạn 10MB
+                throw new IOException("Ảnh quá lớn, vui lòng chọn ảnh nhỏ hơn 10MB");
+            }
+            return result;
+        } finally {
+            inputStream.close();
         }
-        return byteBuffer.toByteArray();
     }
 
     private void addTestFoods() {
@@ -223,7 +207,7 @@ public class AddNewFoodActivity extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), 100);
+        startActivityForResult(Intent.createChooser(intent, "Chọn ảnh"), 100);
     }
 
     // Xử lý kết quả sau khi chọn ảnh
