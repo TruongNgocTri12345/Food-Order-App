@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@drawable/edit_text_background_add_new_food"
-        android:hint="Food Name"
+        android:hint="Tên món ăn"
         android:inputType="text" />
 
     <EditText
@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@drawable/edit_text_background_add_new_food"
-        android:hint="Price"
+        android:hint="Giá"
         android:inputType="numberDecimal" />
 
     <EditText
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@drawable/edit_text_background_add_new_food"
-        android:hint="Quantity"
+        android:hint="Số lượng"
         android:inputType="number" />
 
 
@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@drawable/edit_text_background_add_new_food"
-        android:hint="Description"
+        android:hint="Mô tả"
         android:inputType="textMultiLine"
         android:minLines="3" />
 
@@ -57,5 +57,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Update" />
+        android:text="Cập nhật" />
 </LinearLayout>

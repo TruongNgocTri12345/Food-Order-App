@@ -9,9 +9,9 @@
     android:fitsSystemWindows="true">
 
 
-    <!-- Top Orange Background -->
+    <!-- Nền màu Cam -->
 
-    <!-- App Logo -->
+    <!-- Logo Ứng dụng -->
     <View
         android:id="@+id/top_background"
         android:layout_width="0dp"
@@ -32,7 +32,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/top_background" />
 
-    <!-- App Name -->
+    <!-- Tên Ứng dụng -->
     <TextView
         android:id="@+id/app_name"
         android:layout_width="wrap_content"
@@ -52,16 +52,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="Serving satisfaction, one meal at a time"
+        android:text="Phục vụ sự hài lòng, một bữa ăn mỗi lần"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/app_name" />
 
-    <!-- Create Account Button -->
+    <!-- Nút Tạo tài khoản -->
 
-    <!-- Login Button -->
+    <!-- Nút Đăng nhập -->
 
     <Button
         android:id="@+id/btn_create_account"

@@ -26,7 +26,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cart "
+                android:text="Giỏ hàng "
                 android:textColor="#000"
                 android:textSize="30sp"
                 android:textStyle="bold" />
@@ -51,7 +51,7 @@
                 android:layout_gravity="end"
                 android:padding="0dp"
                 android:layout_margin="5dp"
-                android:text="Delete all" />
+                android:text="Xoá tất cả" />
 
 
         </LinearLayout>
@@ -69,7 +69,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Empty Cart"
+                android:text="Giỏ hàng trống"
                 android:textSize="20dp"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@+id/cartFragmentContainer"
@@ -77,7 +77,7 @@
                 app:layout_constraintStart_toStartOf="@+id/cartFragmentContainer"
                 app:layout_constraintTop_toTopOf="@+id/cartFragmentContainer" />
 
-            <!-- RecyclerView for Cart Items -->
+            <!-- RecyclerView cho các mặt hàng trong giỏ hàng -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcv_cartItems"
                 android:layout_width="match_parent"
@@ -110,7 +110,7 @@
             android:padding="16dp"
             android:translationZ="2dp">
 
-            <!-- Subtotal -->
+            <!-- Tổng cộng -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -122,18 +122,18 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Subtotal"
+                    android:text="Tổng cộng"
                     android:textColor="#000" />
 
                 <TextView
                     android:id="@+id/tvSubtotal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="AED 81.60"
+                    android:text="81,60 AED"
                     android:textColor="#000" />
             </LinearLayout>
 
-            <!-- Discount -->
+            <!-- Giảm giá -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -145,18 +145,18 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Discount 10% (if have 3 or more items)"
+                    android:text="Giảm giá 10% (nếu mua 3 sản phẩm trở lên)"
                     android:textColor="#000" />
 
                 <TextView
                     android:id="@+id/tvDiscount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="- AED 5.00"
+                    android:text="- 5,00 AED"
                     android:textColor="#FF0000" />
             </LinearLayout>
 
-            <!-- Delivery Fee -->
+            <!-- Phí vận chuyển -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -168,18 +168,18 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Delivery fee"
+                    android:text="Phí vận chuyển"
                     android:textColor="#000" />
 
                 <TextView
                     android:id="@+id/tvDeliveryFee"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="AED 2.00"
+                    android:text="2,00 AED"
                     android:textColor="#000" />
             </LinearLayout>
 
-            <!-- Total Amount -->
+            <!-- Tổng số tiền -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -190,7 +190,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Total amount"
+                    android:text="Tổng số tiền"
                     android:textColor="#000"
                     android:textStyle="bold" />
 
@@ -198,13 +198,13 @@
                     android:id="@+id/tvTotalAmount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="AED 80.10"
+                    android:text="80,10 AED"
                     android:textColor="#000"
                     android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
 
-        <!-- Buttons -->
+        <!-- Nút -->
         <LinearLayout
             android:id="@+id/buttonContainer"
             android:layout_width="match_parent"
@@ -214,7 +214,7 @@
             android:orientation="horizontal"
             android:paddingTop="16dp">
 
-            <!-- Add Items Button -->
+            <!-- Nút Thêm hàng hóa -->
             <Button
                 android:id="@+id/btnAddItems"
                 android:layout_width="0dp"
@@ -222,9 +222,9 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_weight="1"
-                android:text="Add items" />
+                android:text="Thêm hàng hóa" />
 
-            <!-- Checkout Button -->
+            <!-- Nút Thanh toán -->
             <Button
                 android:id="@+id/btnCheckout"
                 android:layout_width="0dp"
@@ -232,7 +232,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_weight="1"
-                android:text="Checkout" />
+                android:text="Thanh toán" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

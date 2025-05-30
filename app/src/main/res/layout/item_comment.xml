@@ -30,12 +30,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="4dp"
-                android:text="User Name"
+                android:text="Tên người dùng"
                 android:textColor="@android:color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <!-- Rating của món ăn -->
+            <!-- Đánh giá của người dùng -->
             <TextView
                 android:id="@+id/user_rating"
                 android:layout_width="wrap_content"
@@ -45,14 +45,14 @@
                 android:textSize="16sp" />
         </LinearLayout>
 
-        <!-- Nội dung comment -->
+        <!-- Nội dung bình luận -->
         <TextView
             android:id="@+id/txt_user_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:layout_marginBottom="4dp"
-            android:text="User comment goes here"
+            android:text="Nội dung bình luận của người dùng sẽ được hiển thị ở đây"
             android:textSize="14sp" />
     </LinearLayout>
 

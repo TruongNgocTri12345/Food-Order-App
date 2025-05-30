@@ -30,10 +30,10 @@
             android:textSize="20sp"
             android:textColor="@android:color/black"
             android:textStyle="bold"
-            android:text="Profile" />
+            android:text="Hồ sơ cá nhân" />
     </LinearLayout>
 
-    <!-- Avatar Section -->
+    <!-- Phần Avatar -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Avatar:"
+            android:text="Ảnh đại diện:"
             android:textColor="@android:color/darker_gray"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -56,7 +56,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginBottom="16dp"
-            android:contentDescription="Image preview"
+            android:contentDescription="Xem trước hình ảnh"
             android:layout_gravity="center"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_image_placeholder" />
@@ -67,12 +67,12 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/orange_dark"
             android:layout_gravity="center"
-            android:text="Upload Avatar"
+            android:text="Tải lên Ảnh đại diện"
             android:textColor="@android:color/white"
             android:padding="10dp" />
     </LinearLayout>
 
-    <!-- User Info Section -->
+    <!-- Phần Thông tin người dùng -->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -104,7 +104,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Username:"
+                android:text="Tên người dùng:"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -120,7 +120,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Phone:"
+                android:text="Số điện thoại:"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -136,7 +136,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Address:"
+                android:text="Địa chỉ:"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -150,7 +150,7 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- Edit Profile Button -->
+    <!-- Nút Chỉnh sửa Hồ sơ -->
     <LinearLayout
         android:gravity="center"
         android:layout_height="wrap_content"
@@ -163,7 +163,7 @@
             android:id="@+id/editButton"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="Update Profile"
+            android:text="Cập nhật Hồ sơ"
             android:textColor="@android:color/white"
             android:padding="10dp"
             android:elevation="2dp" />

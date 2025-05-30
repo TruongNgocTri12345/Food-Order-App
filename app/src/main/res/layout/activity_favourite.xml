@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
-        android:contentDescription="Back"
+        android:contentDescription="Quay lại"
         android:src="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="Your Favourite List"
+        android:text="Danh sách yêu thích của bạn"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -57,7 +57,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/ic_favourite_note"
-            android:contentDescription="Sad icon"
+            android:contentDescription="Biểu tượng buồn"
             android:layout_marginBottom="8dp" />
 
 
@@ -65,13 +65,12 @@
             android:id="@+id/txt_no_favourites"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="You have not added any favorites yet.\nAdd them to remember them!!!"
+            android:text="Bạn chưa thêm yêu thích nào.\nHãy thêm để nhớ lại chúng!!!"
             android:textColor="@android:color/white"
             android:textSize="20sp"
             android:gravity="center"
             android:lineSpacingExtra="4dp"
             android:textAlignment="center" />
-        >
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

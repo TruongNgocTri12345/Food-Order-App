@@ -26,7 +26,7 @@
             android:id="@+id/title_order_history"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="List of all orders"
+            android:text="Danh sách đơn hàng"
             android:textColor="#FF5722"
             android:textSize="22sp"
             android:textStyle="bold" />
@@ -35,7 +35,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Filter by Status"
+        android:text="Lọc theo Trạng thái"
         android:textColor="#555"
         android:textSize="16sp"
         android:layout_marginBottom="8dp" />
@@ -69,7 +69,7 @@
             android:id="@+id/order_count"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Total Orders: 0"
+            android:text="Tổng số đơn hàng: 0"
             android:textColor="#555"
             android:textSize="16sp"
             android:layout_marginBottom="4dp" />
@@ -78,7 +78,7 @@
             android:id="@+id/total_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Total Price: $0.00"
+            android:text="Tổng giá: 0,00 $"
             android:textColor="#FF5722"
             android:textSize="16sp"
             android:textStyle="bold" />

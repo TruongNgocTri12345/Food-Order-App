@@ -68,7 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="Category"
+                android:text="Danh mục"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
@@ -77,7 +77,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="Price"
+                android:text="Giá"
                 android:textColor="@color/colorAccent"
                 android:textSize="20sp" />
 
@@ -96,7 +96,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Spice up your Pizza Experience with our pepperoni pizza. Featuring sizzling beef pepperoni, melted mozzarella cheese, and spicy pizza sauce."
+                android:text="Nâng cao trải nghiệm Pizza của bạn với pizza hơi ớt của chúng tôi. Bao gồm xúc xích bò nóng hổi, phô mai mozzarella tan chảy và sốt pizza cay."
                 android:textColor="@android:color/darker_gray"
                 android:textSize="14sp" />
 

@@ -15,8 +15,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:padding="10dp"
-        android:text="Menu"
-        android:textSize="30sp" /> <!-- Đổi từ dp sang sp -->
+        android:text="Thực Đơn"
+        android:textSize="30sp" />
 
     <HorizontalScrollView
         android:layout_width="match_parent"
@@ -33,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="Dishes" />
+                android:text="Món Ăn" />
 
             <Button
                 android:id="@+id/btn_pizza"
@@ -54,14 +54,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="Drinks" />
+                android:text="Đồ Uống" />
 
             <Button
                 android:id="@+id/btn_dessert"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="Dessert" />
+                android:text="Tráng Miệng" />
         </LinearLayout>
     </HorizontalScrollView>
 
@@ -79,7 +79,7 @@
             android:drawableLeft="@drawable/ic_search"
             android:elevation="2dp"
             android:ems="10"
-            android:hint="Search for today's meal"
+            android:hint="Tìm kiếm bữa ăn hôm nay"
             android:inputType="text"
             android:padding="10dp"
             android:textSize="20sp"
@@ -95,7 +95,7 @@
             android:layout_marginStart="10dp"
             android:layout_alignBottom="@id/txt_search"
             android:layout_alignTop="@id/txt_search"
-            android:contentDescription="Sort Button"
+            android:contentDescription="Nút Sắp xếp"
             android:padding="5dp" />
     </RelativeLayout>
 
@@ -104,8 +104,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="5dp">
-
-
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcv_menu"
@@ -133,7 +131,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="No results found"
+            android:text="Không tìm thấy kết quả"
             android:textSize="18sp"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"

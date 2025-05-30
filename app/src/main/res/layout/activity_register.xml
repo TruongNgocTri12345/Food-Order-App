@@ -9,18 +9,18 @@
     android:fitsSystemWindows="true"
     tools:context=".Activities.RegisterActivity">
 
-    <!-- Title -->
+    <!-- Tiêu đề -->
 
-    <!-- Create an account title -->
+    <!-- Tiêu đề tạo tài khoản -->
 
-    <!-- Instruction text -->
+    <!-- Văn bản hướng dẫn -->
 
     <TextView
         android:id="@+id/create_account_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
-        android:text="Create an account"
+        android:text="Tạo tài khoản"
         android:textColor="@android:color/black"
         android:textSize="25sp"
         android:textStyle="bold"
@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="Please fill in your accurate information"
+        android:text="Vui lòng điền thông tin chính xác của bạn"
         android:textColor="@android:color/black"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,7 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:background="@drawable/edit_text_background"
-        android:hint="Username"
+        android:hint="Tên người dùng"
         android:textColor="@color/black"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -76,7 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/edit_text_background"
-        android:hint="Phone number"
+        android:hint="Số điện thoại"
         android:textColor="@color/black"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -84,7 +84,7 @@
         app:layout_constraintTop_toBottomOf="@id/txt_email"
         app:layout_constraintWidth_percent="0.9" />
 
-    <!-- Password Input -->
+    <!-- Nhập mật khẩu -->
     <EditText
         android:id="@+id/txt_password"
         android:layout_width="0dp"
@@ -92,7 +92,7 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/edit_text_background"
         android:drawablePadding="8dp"
-        android:hint="Password"
+        android:hint="Mật khẩu"
         android:textColor="@color/black"
         android:inputType="textPassword"
         android:padding="16dp"
@@ -112,7 +112,7 @@
         app:layout_constraintEnd_toEndOf="@id/txt_password"
         app:layout_constraintTop_toTopOf="@id/txt_password" />
 
-    <!-- Confirm Password Input -->
+    <!-- Xác nhận mật khẩu -->
     <EditText
         android:id="@+id/txt_confirm_password"
         android:layout_width="0dp"
@@ -120,7 +120,7 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/edit_text_background"
         android:drawablePadding="8dp"
-        android:hint="Confirm Password"
+        android:hint="Xác nhận mật khẩu"
         android:inputType="textPassword"
         android:textColor="@color/black"
         android:padding="16dp"
@@ -140,14 +140,14 @@
         app:layout_constraintEnd_toEndOf="@id/txt_confirm_password"
         app:layout_constraintTop_toTopOf="@id/txt_confirm_password" />
 
-    <!-- Address Input -->
+    <!-- Nhập địa chỉ -->
     <EditText
         android:id="@+id/txt_address"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/edit_text_background"
-        android:hint="Address"
+        android:hint="Địa chỉ"
         android:padding="16dp"
         android:textColor="@color/black"
         android:inputType="textMultiLine"
@@ -163,7 +163,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:backgroundTint="@color/orange"
-        android:text="Taọ tài khoản"
+        android:text="Tạo tài khoản"
         android:textColor="@android:color/white"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -181,6 +181,6 @@
         tools:layout_editor_absoluteX="20dp"
         tools:layout_editor_absoluteY="14dp" />
 
-    <!-- Disclaimer Text -->
+    <!-- Văn bản miễn trừ trách nhiệm -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,7 +12,7 @@
         android:id="@+id/btnAddNewFood"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add New Food"
+        android:text="Thêm Món Mới"
         android:layout_marginLeft="2dp"
         android:textStyle="bold"
         android:backgroundTint="@color/orange"/>
@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="2dp"
-            android:text="Total food items: 0"
+            android:text="Tổng số món ăn: 0"
             android:textColor="@android:color/black"
             android:textSize="16sp" />
 

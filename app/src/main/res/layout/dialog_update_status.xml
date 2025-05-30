@@ -9,21 +9,21 @@
         android:id="@+id/buttonCancel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cancel"
+        android:text="Hủy"
         android:backgroundTint="@android:color/holo_red_light" />
 
     <Button
         android:id="@+id/buttonWaiting"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Waiting"
+        android:text="Đang chờ"
         android:backgroundTint="@android:color/holo_blue_light" />
 
     <Button
         android:id="@+id/buttonSuccess"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Success"
+        android:text="Thành công"
         android:backgroundTint="@android:color/holo_green_light" />
 
 </LinearLayout>

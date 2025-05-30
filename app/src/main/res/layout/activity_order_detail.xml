@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -36,7 +37,7 @@
                     android:id="@+id/title_order_history_detail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Order History Detail"
+                    android:text="Chi tiết lịch sử đơn hàng"
                     android:textColor="#FF5722"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -81,7 +82,7 @@
                             android:id="@+id/orderId"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Order ID"
+                            android:text="Mã đơn hàng"
                             android:textSize="16sp"
                             android:textStyle="bold"
                             android:textColor="#000" />
@@ -100,7 +101,7 @@
                     android:id="@+id/orderUserName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Username"
+                    android:text="Tên người dùng"
                     android:textSize="14sp"
                     android:textColor="#000"
                     android:layout_marginBottom="4dp" />
@@ -154,7 +155,7 @@
             android:id="@+id/orderSummaryTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Order summary"
+            android:text="Tóm tắt đơn hàng"
             android:textStyle="bold"
             android:textSize="16sp"
             android:textColor="#000"
@@ -183,7 +184,7 @@
                     android:id="@+id/orderSubtotal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Tổng tạm tính: 53.000đ"
+                    android:text="Tạm tính: 53.000đ"
                     android:textSize="14sp"
                     android:textColor="#000"
                     android:paddingBottom="4dp" />
@@ -192,7 +193,7 @@
                     android:id="@+id/orderDelivery"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Phí áp dụng: 19.000đ"
+                    android:text="Phí vận chuyển: 19.000đ"
                     android:textSize="14sp"
                     android:textColor="#000"
                     android:paddingBottom="4dp" />
@@ -201,7 +202,7 @@
                     android:id="@+id/orderDiscount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Giảm: -7.000đ"
+                    android:text="Giảm giá: -7.000đ"
                     android:textSize="14sp"
                     android:textColor="#FF0000"
                     android:paddingBottom="4dp" />
@@ -222,7 +223,7 @@
             android:id="@+id/reorderButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Reorder"
+            android:text="Đặt lại đơn hàng"
             android:layout_marginTop="16dp"
             android:background="@color/orange"
             android:textColor="@android:color/white"
@@ -233,7 +234,7 @@
             android:id="@+id/updateStatusButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Update Order Status"
+            android:text="Cập nhật trạng thái đơn hàng"
             android:layout_marginTop="16dp"
             android:background="@color/orange"
             android:textColor="@android:color/white"

@@ -12,17 +12,17 @@
         android:id="@+id/header_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-        android:text="Hello, !"
-    android:textSize="24sp"
-    android:textStyle="bold"
-    android:gravity="center" />
+        android:layout_marginTop="8dp"
+        android:text="Xin chào, !"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:gravity="center" />
 
     <TextView
         android:id="@+id/wishing_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="wishing you a delicious meal"
+        android:text="Chúc bạn một bữa ăn ngon lành"
         android:textSize="16sp"
         android:gravity="center" />
 
@@ -57,7 +57,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Dishes"
+                android:text="Món ăn"
                 android:textSize="12sp" />
         </LinearLayout>
 
@@ -140,7 +140,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Drinks"
+                android:text="Nước uống"
                 android:textSize="12sp" />
         </LinearLayout>
 
@@ -167,7 +167,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Desserts"
+                android:text="Tráng miệng"
                 android:textSize="12sp" />
         </LinearLayout>
         <!-- Thêm các danh mục khác tương tự... -->
@@ -185,7 +185,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New • Limited time"
+            android:text="Mới • Thời gian giới hạn"
             android:textColor="@android:color/black"
             android:textSize="14sp"
             android:textStyle="bold" />
@@ -206,7 +206,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="4dp"
-                android:text="California-style pizza Sicilian pizza with Burger or French fries or 1 free Coca cola drink."
+                android:text="Pizza kiểu California, Pizza Sicilian kèm Burger hoặc khoai tây chiên hoặc 1 nước ngọt Coca cola miễn phí."
                 android:textColor="@android:color/black"
                 android:textSize="12sp" />
         </LinearLayout>
@@ -223,7 +223,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Popular"
+            android:text="Phổ biến"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -232,7 +232,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="See all"
+            android:text="Xem tất cả"
             android:textColor="@android:color/holo_red_light"
             android:textSize="14sp" />
     </LinearLayout>

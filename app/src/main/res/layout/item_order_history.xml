@@ -33,7 +33,7 @@
                 android:id="@+id/orderId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="FPT"
+                android:text="Đơn hàng FPT"
                 android:textSize="16sp"
                 android:textColor="#000"
                 android:textStyle="bold" />
@@ -42,7 +42,7 @@
                 android:id="@+id/orderStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="18:29, 16 Th10 2024"
+                android:text="Đã nhận vào: 18:29, 16 Tháng 10 năm 2024"
                 android:textSize="14sp"
                 android:textColor="#777"
                 android:layout_marginTop="4dp" />
@@ -51,7 +51,7 @@
                 android:id="@+id/orderTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="18:29, 16 Th10 2024"
+                android:text="Thời gian đặt: 18:29, 16 Tháng 10 năm 2024"
                 android:textSize="14sp"
                 android:textColor="#777"
                 android:layout_marginTop="4dp" />
@@ -61,13 +61,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="58.000đ"
+                android:text="Tổng tiền: 58.000đ"
                 android:textColor="@color/orange"
                 android:textSize="16sp" />
 
         </LinearLayout>
 
-        <!-- Nút "Detail" nằm bên phải -->
+        <!-- Nút "Chi tiết" nằm bên phải -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -86,11 +86,9 @@
                 android:id="@+id/btnDetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Detail"
+                android:text="Chi tiết"
                 android:textColor="@color/orange"
                 android:layout_gravity="center_vertical" />
         </LinearLayout>
     </LinearLayout>
-
-
 </LinearLayout>

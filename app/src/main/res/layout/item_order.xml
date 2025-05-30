@@ -27,7 +27,7 @@
             android:id="@+id/order_foodName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Food Name"
+            android:text="Tên món ăn"
             android:textColor="@android:color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -36,7 +36,7 @@
             android:id="@+id/order_foodCategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Food category"
+            android:text="Danh mục món ăn"
             android:textColor="@android:color/darker_gray"
             android:textSize="14sp" />
 
@@ -45,7 +45,7 @@
             android:id="@+id/order_foodPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Price"
+            android:text="Giá"
             android:textColor="@color/black"
             android:textStyle="bold" />
 
@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:layout_weight="0"
-                android:text="Total:"
+                android:text="Tổng:"
                 android:textColor="@android:color/black"
                 android:textSize="14sp" />
 
@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="end"
-                android:text="Item total price"
+                android:text="Tổng giá món hàng"
                 android:textColor="@color/orange_dark"
                 android:textStyle="bold" />
 

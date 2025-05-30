@@ -10,8 +10,6 @@
     android:layout_margin="5dp"
     android:padding="10dp">
 
-
-
     <ImageView
         android:id="@+id/img_foodImage"
         android:layout_width="80dp"
@@ -27,7 +25,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="Food Name"
+        android:text="Tên món ăn"
         android:textSize="16sp"
         android:textColor="@android:color/black"
         android:textStyle="bold"
@@ -50,19 +48,20 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="★★★★☆ 4.5"
-    android:textColor="@android:color/holo_orange_dark"
-    android:textSize="16sp"
-    app:layout_constraintStart_toStartOf="@id/txt_foodPrice"
-    app:layout_constraintTop_toBottomOf="@id/txt_foodPrice" />
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/txt_foodPrice"
+        app:layout_constraintTop_toBottomOf="@id/txt_foodPrice" />
 
     <ImageButton
         android:id="@+id/btn_remove"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:contentDescription="Remove Food Item"
+        android:contentDescription="Xóa món ăn"
         android:padding="8dp"
         android:src="@drawable/ic_favourite_full"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/img_foodImage" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
