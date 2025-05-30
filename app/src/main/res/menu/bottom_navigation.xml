@@ -3,21 +3,21 @@
     <item
         android:id="@+id/menu"
         android:icon="@drawable/ic_menu"
-        android:title="Menu"/>
+        android:title="Thực đơn"/>
     <item
         android:id="@+id/cart"
         android:icon="@drawable/ic_cart"
-        android:title="Cart"/>
+        android:title="Giỏ hàng"/>
     <item
         android:id="@+id/home"
         android:icon="@drawable/ic_home"
-        android:title="Home"/>
+        android:title="Trang chủ"/>
     <item
         android:id="@+id/profile"
         android:icon="@drawable/ic_profile"
-        android:title="Profile"/>
+        android:title="Hồ sơ"/>
     <item
         android:id="@+id/logout"
         android:icon="@drawable/ic_logout"
-        android:title="Logout"/>
+        android:title="Đăng xuất"/>
 </menu>

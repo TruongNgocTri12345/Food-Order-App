@@ -27,7 +27,7 @@
             android:id="@+id/menu_foodName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Food Name"
+            android:text="Tên món ăn"
             android:textColor="@android:color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -37,7 +37,7 @@
             android:id="@+id/menu_foodPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Price"
+            android:text="Giá"
             android:textColor="@android:color/black"
             android:textStyle="bold" />
 
@@ -45,23 +45,24 @@
             android:id="@+id/menu_foodRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rating"
+            android:text="Đánh giá"
             android:textColor="@android:color/holo_orange_dark" />
 
         <TextView
             android:id="@+id/menu_foodDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Food description"
+            android:text="Mô tả món ăn"
             android:textColor="@android:color/darker_gray"
             android:textSize="14sp" />
     </LinearLayout>
-        <ImageButton
-            android:id="@+id/btn_add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:contentDescription="Add Food Item"
-            android:padding="8dp"
-            android:src="@drawable/ic_add" />
+
+    <ImageButton
+        android:id="@+id/btn_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:contentDescription="Thêm món ăn"
+        android:padding="8dp"
+        android:src="@drawable/ic_add" />
 </LinearLayout>

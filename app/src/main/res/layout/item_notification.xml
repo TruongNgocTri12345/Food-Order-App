@@ -11,51 +11,51 @@
     android:elevation="6dp"
     >
 
-<ImageView
-android:id="@+id/imgProfile"
-android:layout_width="48dp"
-android:layout_height="48dp"
-android:src="@drawable/ic_notification"
-android:layout_marginEnd="12dp"
-android:background="@drawable/circle_shape"
-android:padding="6dp"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintBottom_toBottomOf="parent" />
+    <ImageView
+        android:id="@+id/imgProfile"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/ic_notification"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/circle_shape"
+        android:padding="6dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
-<TextView
-android:id="@+id/tvNotificationMessage"
-android:layout_width="0dp"
-android:layout_height="wrap_content"
-android:text="Notification message"
-android:textSize="16sp"
-android:textColor="@android:color/black"
-android:layout_marginStart="12dp"
-android:lineSpacingExtra="2dp"
-android:fontFamily="sans-serif-medium"
-android:paddingBottom="4dp"
-    app:layout_constraintStart_toEndOf="@id/imgProfile"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/tvNotificationMessage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Thông báo"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:layout_marginStart="12dp"
+        android:lineSpacingExtra="2dp"
+        android:fontFamily="sans-serif-medium"
+        android:paddingBottom="4dp"
+        app:layout_constraintStart_toEndOf="@id/imgProfile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-<TextView
-android:id="@+id/tvNotificationDate"
-android:layout_width="0dp"
-android:layout_height="wrap_content"
-android:text="Date"
-android:textSize="14sp"
-android:layout_marginStart="12dp"
-android:textColor="@android:color/darker_gray"
-app:layout_constraintStart_toEndOf="@id/imgProfile"
-app:layout_constraintEnd_toEndOf="parent"
-app:layout_constraintTop_toBottomOf="@id/tvNotificationMessage"
-android:layout_marginTop="4dp" />
+    <TextView
+        android:id="@+id/tvNotificationDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Ngày"
+        android:textSize="14sp"
+        android:layout_marginStart="12dp"
+        android:textColor="@android:color/darker_gray"
+        app:layout_constraintStart_toEndOf="@id/imgProfile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvNotificationMessage"
+        android:layout_marginTop="4dp" />
 
     <TextView
         android:id="@+id/tvNewLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="NEW"
+        android:text="MỚI"
         android:textSize="12sp"
         android:textColor="@android:color/white"
         android:background="@drawable/rounded_red_background"
@@ -65,4 +65,4 @@ android:layout_marginTop="4dp" />
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginEnd="4dp"
         android:layout_marginTop="4dp" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

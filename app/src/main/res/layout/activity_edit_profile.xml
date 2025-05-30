@@ -12,7 +12,7 @@
         android:id="@+id/titleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Edit Profile"
+        android:text="Chỉnh Sửa Hồ Sơ"
         android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="@android:color/black"
@@ -24,21 +24,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/ic_name"
-        android:hint="User Name" />
+        android:hint="Tên người dùng" />
 
     <EditText
         android:id="@+id/editUserPhone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/ic_phone"
-        android:hint="User Phone" />
+        android:hint="Số điện thoại người dùng" />
 
     <EditText
         android:id="@+id/editUserAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/ic_address"
-        android:hint="User Address" />
+        android:hint="Địa chỉ người dùng" />
 
 
     <LinearLayout
@@ -52,13 +52,13 @@
             android:id="@+id/saveButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Save" />
+            android:text="Lưu lại" />
 
         <Button
             android:id="@+id/cancelButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cancel"
+            android:text="Hủy"
             android:textColorLink="#F44336"
             android:layout_marginStart="16dp" />
     </LinearLayout>

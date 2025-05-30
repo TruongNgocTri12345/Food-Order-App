@@ -27,7 +27,7 @@
             android:id="@+id/cart_foodName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Food Name"
+            android:text="Tên món ăn"
             android:textColor="@android:color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -36,7 +36,7 @@
             android:id="@+id/cart_foodCategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Food category"
+            android:text="Danh mục món ăn"
             android:textColor="@android:color/darker_gray"
             android:textSize="14sp" />
 
@@ -45,7 +45,7 @@
             android:id="@+id/cart_foodPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Price"
+            android:text="Giá"
             android:textColor="@android:color/black"
             android:textStyle="bold" />
 
@@ -53,7 +53,7 @@
             android:id="@+id/cart_foodRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rating"
+            android:text="Đánh giá"
             android:textColor="@android:color/holo_orange_dark" />
     </LinearLayout>
 

@@ -19,7 +19,7 @@
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:src="@drawable/ic_back"
-            android:contentDescription="Back icon"
+            android:contentDescription="Biểu tượng Quay lại"
             android:padding="4dp"
             android:clickable="true"
             android:focusable="true" />
@@ -29,13 +29,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="Add New Food"
+            android:text="Thêm Món Ăn Mới"
             android:textColor="@android:color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
     </LinearLayout>
 
-    <!-- Main Content -->
+    <!-- Nội dung chính -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -49,14 +49,14 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Existing form content -->
+            <!-- Nội dung form hiện có -->
             <EditText
                 android:id="@+id/etFoodName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/edit_text_background_add_new_food"
-                android:hint="Food Name"
+                android:hint="Tên Món Ăn"
                 android:inputType="text"
                 android:padding="10dp"
                 android:textColor="@android:color/black" />
@@ -67,47 +67,47 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/edit_text_background_add_new_food"
-                android:hint="Price"
+                android:hint="Giá"
                 android:inputType="numberDecimal"
                 android:padding="10dp"
                 android:textColor="@android:color/black" />
 
-            <!-- Quantity Input -->
+            <!-- Nhập Số Lượng -->
             <EditText
                 android:id="@+id/etFoodQuantity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/edit_text_background_add_new_food"
-                android:hint="Quantity"
+                android:hint="Số Lượng"
                 android:inputType="number"
                 android:padding="10dp"
                 android:textColor="@android:color/black" />
 
-            <!-- Description Input -->
+            <!-- Mô Tả -->
             <EditText
                 android:id="@+id/etFoodDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/edit_text_background_add_new_food"
-                android:hint="Description"
+                android:hint="Mô Tả"
                 android:inputType="textMultiLine"
                 android:minLines="3"
                 android:padding="10dp"
                 android:textColor="@android:color/black" />
 
-            <!-- Category Selection -->
+            <!-- Lựa Chọn Danh Mục -->
             <TextView
                 android:id="@+id/textViewCategory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:text="Select Category"
+                android:text="Chọn Danh Mục"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <!-- Spinner for Category Selection -->
+            <!-- Spinner Danh Mục -->
             <Spinner
                 android:id="@+id/spinnerCategory"
                 android:layout_width="wrap_content"
@@ -122,11 +122,11 @@
                 android:layout_height="200dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
-                android:contentDescription="Image preview"
+                android:contentDescription="Xem Trước Hình Ảnh"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_image_placeholder" />
 
-            <!-- ProgressBar -->
+            <!-- Thanh Tiến Trình -->
             <ProgressBar
                 android:id="@+id/progressBar"
                 android:layout_width="wrap_content"
@@ -135,7 +135,7 @@
                 android:layout_marginBottom="10dp"
                 android:visibility="gone" />
 
-            <!-- Choose Image Button -->
+            <!-- Nút Chọn Hình Ảnh -->
             <Button
                 android:id="@+id/btnChooseImage"
                 android:layout_width="wrap_content"
@@ -143,10 +143,10 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="20dp"
                 android:backgroundTint="@color/teal_200"
-                android:text="Choose Image"
+                android:text="Chọn Hình Ảnh"
                 android:textColor="@android:color/white" />
 
-            <!-- Add Food Button -->
+            <!-- Nút Thêm Món Ăn -->
             <Button
                 android:id="@+id/btnAddFood"
                 android:layout_width="match_parent"
@@ -154,7 +154,7 @@
                 android:layout_marginTop="10dp"
                 android:backgroundTint="@color/orange"
                 android:padding="12dp"
-                android:text="Add Food"
+                android:text="Thêm Món Ăn"
                 android:textColor="@android:color/white" />
 
         </LinearLayout>

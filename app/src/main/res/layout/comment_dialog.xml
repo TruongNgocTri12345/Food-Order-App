@@ -6,17 +6,17 @@
     android:background="@color/white"
     android:padding="20dp">
 
-    <!-- Title -->
+    <!-- Tiêu đề -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Review Food"
+        android:text="Đánh giá món ăn"
         android:textSize="18sp"
         android:textStyle="bold"
         android:layout_gravity="center_horizontal"
         android:paddingBottom="10dp" />
 
-    <!-- Rating bar -->
+    <!-- Thanh đánh giá -->
     <RatingBar
         android:id="@+id/foodRating"
         android:layout_width="wrap_content"
@@ -31,18 +31,18 @@
         android:id="@+id/edtComment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Please write your review..."
+        android:hint="Xin vui lòng viết đánh giá của bạn..."
         android:background="@drawable/edit_text_background"
         android:padding="10dp"
         android:minHeight="100dp"
         android:gravity="top|start" />
 
-    <!-- Rating button -->
+    <!-- Nút đánh giá -->
     <Button
         android:id="@+id/btnSubmitRating"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Review"
+        android:text="Đánh giá"
         android:textColor="@android:color/white"
         android:backgroundTint="@color/orange_dark"
         android:layout_marginTop="15dp" />
