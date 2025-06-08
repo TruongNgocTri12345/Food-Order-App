@@ -1,7 +1,9 @@
 package com.example.food_order_app.Activities;
 
+import android.Manifest;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.Button;
@@ -9,9 +11,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,6 +39,7 @@ public class NotificationActivity extends AppCompatActivity {
     private List<Notification> notificationList;
     private DatabaseReference dbNotifications;
     private boolean isAdmin;
+    private static final int REQUEST_NOTIFICATION_PERMISSION = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,15 +142,38 @@ public class NotificationActivity extends AppCompatActivity {
                 });
     }
 
-    private void sendAdminNotification(String message) {
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "AdminChannel")
-                .setSmallIcon(R.drawable.food_icon)
-                .setContentTitle("Order Notification")
-                .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setAutoCancel(true);
 
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-        notificationManager.notify((int) System.currentTimeMillis(), builder.build());
+    private void sendAdminNotification(String message) {
+        // Kiểm tra quyền gửi thông báo
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            // Nếu chưa có quyền, yêu cầu người dùng cấp quyền
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.POST_NOTIFICATIONS}, REQUEST_NOTIFICATION_PERMISSION);
+        } else {
+            // Nếu đã có quyền, tiếp tục gửi thông báo
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "AdminChannel")
+                    .setSmallIcon(R.drawable.food_icon)
+                    .setContentTitle("Order Notification")
+                    .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
+                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                    .setAutoCancel(true);
+
+            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+            notificationManager.notify((int) System.currentTimeMillis(), builder.build());
+        }
     }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == REQUEST_NOTIFICATION_PERMISSION) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Quyền đã được cấp, tiếp tục gửi thông báo
+                sendAdminNotification("Your message here.");
+            } else {
+                // Quyền bị từ chối, thông báo người dùng
+                Toast.makeText(this, "Permission denied to post notifications", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
 }

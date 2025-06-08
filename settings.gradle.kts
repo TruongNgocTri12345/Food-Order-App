@@ -1,3 +1,4 @@
+// Kích hoạt tính năng preview cho dependency catalogs
 pluginManagement {
     repositories {
         google {

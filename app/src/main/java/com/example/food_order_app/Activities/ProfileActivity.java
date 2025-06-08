@@ -113,13 +113,20 @@ public class ProfileActivity extends AppCompatActivity {
             String updatedName = data.getStringExtra("updatedName");
             String updatedPhone = data.getStringExtra("updatedPhone");
             String updatedAddress = data.getStringExtra("updatedAddress");
+
+            // Cập nhật thông tin trên UI
             userNameTextView.setText(updatedName);
             userPhoneTextView.setText(updatedPhone);
             userAddressTextView.setText(updatedAddress);
-        } else if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            imageUri = data.getData();
-            imageAvatar.setImageURI(imageUri); // Cập nhật hình ảnh trong ImageView
-            uploadImage(); // Gọi phương thức uploadImage() để tải ảnh lên Firebase
+
+            // Cập nhật thông tin trên Firebase
+            String userId = getSharedPreferences("user_prefs", MODE_PRIVATE)
+                    .getString("current_user_id", null);
+            if (userId != null) {
+                dbUsers.child(userId).child("userName").setValue(updatedName);
+                dbUsers.child(userId).child("userPhone").setValue(updatedPhone);
+                dbUsers.child(userId).child("userAddress").setValue(updatedAddress);
+            }
         }
     }
 

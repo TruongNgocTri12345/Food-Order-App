@@ -17,8 +17,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -51,7 +53,7 @@ public class OrderActivity extends AppCompatActivity {
     private User currentUser;
     private DatabaseReference dbOrders;
     private String userId;
-
+    private static final int REQUEST_NOTIFICATION_PERMISSION = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -207,29 +209,42 @@ public class OrderActivity extends AppCompatActivity {
 
 
     private void sendNotificationToUser(String message) {
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "order_channel")
-                .setSmallIcon(R.drawable.food_icon)
-                .setContentTitle("Order Confirmation")
-                .setContentText(message)
-                .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setAutoCancel(true);
+        // Kiểm tra quyền gửi thông báo
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            // Nếu chưa có quyền, yêu cầu người dùng cấp quyền
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.POST_NOTIFICATIONS}, REQUEST_NOTIFICATION_PERMISSION);
+        } else {
+            // Nếu đã có quyền, tiếp tục gửi thông báo
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "order_channel")
+                    .setSmallIcon(R.drawable.food_icon)
+                    .setContentTitle("Order Confirmation")
+                    .setContentText(message)
+                    .setPriority(NotificationCompat.PRIORITY_HIGH)
+                    .setAutoCancel(true);
 
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-        notificationManager.notify((int) System.currentTimeMillis(), builder.build());
+            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+            notificationManager.notify((int) System.currentTimeMillis(), builder.build());
+        }
     }
 
     private void sendAdminNotification(String message) {
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "admin_channel")
-                .setSmallIcon(R.drawable.food_icon)
-                .setContentTitle("Order Notification")
-                .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
-                .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setAutoCancel(true);
+        // Kiểm tra quyền gửi thông báo
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            // Nếu chưa có quyền, yêu cầu người dùng cấp quyền
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.POST_NOTIFICATIONS}, REQUEST_NOTIFICATION_PERMISSION);
+        } else {
+            // Nếu đã có quyền, tiếp tục gửi thông báo
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "admin_channel")
+                    .setSmallIcon(R.drawable.food_icon)
+                    .setContentTitle("Order Notification")
+                    .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
+                    .setPriority(NotificationCompat.PRIORITY_HIGH)
+                    .setAutoCancel(true);
 
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-        notificationManager.notify((int) System.currentTimeMillis(), builder.build());
+            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+            notificationManager.notify((int) System.currentTimeMillis(), builder.build());
+        }
     }
-
 
     private void clearCart() {
         DatabaseReference dbCartItems = FirebaseDatabase.getInstance().getReference("Cart").child(userId);

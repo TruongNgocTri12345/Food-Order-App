@@ -75,8 +75,8 @@
         android:layout_marginEnd="16dp"
         android:background="@null"
         android:src="@drawable/ic_visibility_off"
-        app:layout_constraintTop_toTopOf="@id/txt_password"
-        app:layout_constraintEnd_toEndOf="@id/txt_password" />
+        app:layout_constraintEnd_toEndOf="@id/txt_password"
+        app:layout_constraintTop_toTopOf="@id/txt_password" />
 
     <!-- Quên mật khẩu -->
     <TextView
@@ -136,11 +136,11 @@
         <ImageButton
             android:id="@+id/btn_login_google"
             android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
             android:background="@null"
-            android:src="@drawable/icon_google"
-            android:contentDescription="Đăng nhập bằng Google" />
+            android:contentDescription="Đăng nhập bằng Google"
+            android:src="@drawable/icon_google" />
 
         <ImageButton
             android:id="@+id/btn_login_facebook"

@@ -47,7 +47,13 @@ public class User implements Serializable  {
         this.userPhone = userPhone;
         this.userAddress = userAddress;
     }
-
+    // Constructor với 4 tham số
+    public User(String userId, String userName, String userEmail, String avatarUrl) {
+        this.userId = userId;
+        this.userName = userName;
+        this.userEmail = userEmail;
+        this.avatarUrl = avatarUrl;
+    }
     public String getAvatarUrl() {
         return avatarUrl;
     }

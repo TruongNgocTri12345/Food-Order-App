@@ -3,6 +3,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="back_button">Back</string>
+    <string name="default_web_client_id">770258126813-hll6tvnnuv56620v4r9mcp7t433s414k.apps.googleusercontent.com</string>
+    <string name="facebook_app_id">1094353142791880</string>
     <string-array name="month_array">
         <item>January</item>
         <item>February</item>
