@@ -12,8 +12,16 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
+import com.facebook.AccessToken;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookActivity;
+import com.facebook.CallbackManager;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,20 +38,10 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.login.LoginResult;
-import com.facebook.CallbackManager;
-import com.facebook.FacebookSdk;
-import com.facebook.appevents.AppEventsLogger;
-import com.facebook.AccessToken;
-import com.facebook.login.LoginManager;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Arrays;
@@ -57,8 +55,7 @@ public class LoginActivity extends AppCompatActivity {
     private DatabaseReference dbUsers;
     private GoogleSignInClient mGoogleSignInClient;
     private static final int RC_SIGN_IN = 9001;
-    private ImageButton btnGoogleSignIn;
-    private ImageButton btnFacebookLogin;
+    private ImageButton btnGoogleSignIn, btnFacebookSignIn;
     private CallbackManager callbackManager;
 
     @Override
@@ -67,8 +64,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         // Khởi tạo Facebook SDK
-        FacebookSdk.sdkInitialize(getApplicationContext());  // Đảm bảo dùng getApplicationContext() ở đây
-        AppEventsLogger.activateApp((Application) getApplicationContext());  // Cast thành Application
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        AppEventsLogger.activateApp((Application) getApplicationContext());
 
         dbUsers = FirebaseDatabase.getInstance().getReference("Users");
 
@@ -79,48 +76,28 @@ public class LoginActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.txt_password);
         btnTogglePassword = findViewById(R.id.btn_toggle_password);
         btnGoogleSignIn = findViewById(R.id.btn_login_google);
-        btnFacebookLogin = findViewById(R.id.btn_login_facebook);
+        btnFacebookSignIn = findViewById(R.id.btn_login_facebook);
 
-        // Facebook Login
-        callbackManager = CallbackManager.Factory.create(); // Tạo CallbackManager cho Facebook
-        btnFacebookLogin.setOnClickListener(v -> {
-            // Đăng nhập bằng Facebook
-            LoginManager.getInstance().logInWithReadPermissions(LoginActivity.this, Arrays.asList("email", "public_profile"));
-        });
-
-        // Đăng ký callback cho Facebook login
-        LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                // Lấy token truy cập Facebook
-                AccessToken accessToken = loginResult.getAccessToken();
-                Log.d("FacebookLogin", "Access Token: " + accessToken.getToken());
-                handleFacebookAccessToken(accessToken);
-            }
-
-            @Override
-            public void onCancel() {
-                Toast.makeText(LoginActivity.this, "Login Cancelled", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onError(FacebookException error) {
-                Toast.makeText(LoginActivity.this, "Login Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+        // Khởi tạo CallbackManager của Facebook
+        callbackManager = CallbackManager.Factory.create();
 
         // Cấu hình Google Sign-In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))  // Client ID từ strings.xml
+                .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
-        Log.d("LoginActivity", "Starting Google Sign-In");
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         // Gán sự kiện click cho nút Google Sign-In
         btnGoogleSignIn.setOnClickListener(view -> {
             Log.d("LoginActivity", "Google Sign-In button clicked");
             signInWithGoogle();
+        });
+
+        // Gán sự kiện click cho nút Facebook Sign-In
+        btnFacebookSignIn.setOnClickListener(view -> {
+            Log.d("LoginActivity", "Facebook Sign-In button clicked");
+            loginWithFacebook();
         });
 
         // Các sự kiện cho nút khác
@@ -135,6 +112,62 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    // Đăng nhập với Facebook
+    private void loginWithFacebook() {
+        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("email", "public_profile"));
+        LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                Log.d("LoginActivity", "Facebook Login successful");
+                handleFacebookAccessToken(loginResult.getAccessToken());
+            }
+
+            @Override
+            public void onCancel() {
+                Log.d("LoginActivity", "Facebook Login canceled");
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+                Log.e("LoginActivity", "Facebook Login failed", error);
+                Toast.makeText(LoginActivity.this, "Facebook Login failed", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    // Xử lý Token Facebook
+    private void handleFacebookAccessToken(AccessToken token) {
+        AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
+        FirebaseAuth.getInstance().signInWithCredential(credential)
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                        // Lưu thông tin người dùng vào Firebase
+                        String userId = user.getUid();
+                        String userName = user.getDisplayName();
+                        String userEmail = user.getEmail();
+                        Uri userPhotoUrl = user.getPhotoUrl();
+
+                        User fbUser = new User(userId, userName, userEmail, userPhotoUrl != null ? userPhotoUrl.toString() : "");
+                        dbUsers.child(userId).setValue(fbUser)
+                                .addOnCompleteListener(this, fbTask -> {
+                                    if (fbTask.isSuccessful()) {
+                                        SharedPreferences prefs = getSharedPreferences("user_prefs", MODE_PRIVATE);
+                                        prefs.edit().putString("current_user_id", userId).apply();
+
+                                        Intent intent = new Intent(LoginActivity.this, NavigationActivity.class);
+                                        startActivity(intent);
+                                        finish();
+                                    } else {
+                                        Toast.makeText(LoginActivity.this, "Error saving user data to Firebase", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                    } else {
+                        Toast.makeText(LoginActivity.this, "Authentication Failed.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
     private void signInWithGoogle() {
         Log.d("LoginActivity", "Starting Google Sign-In Intent");
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
@@ -144,10 +177,6 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-        // Facebook Login
-        callbackManager.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
@@ -160,6 +189,9 @@ public class LoginActivity extends AppCompatActivity {
                 Log.d("Google Sign-In", "Error code: " + e.getStatusCode());
             }
         }
+
+        // Handle result from Facebook Login
+        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
     private void handleGoogleSignIn(GoogleSignInAccount account) {
@@ -181,21 +213,6 @@ public class LoginActivity extends AppCompatActivity {
                         finish();
                     } else {
                         Toast.makeText(LoginActivity.this, "Error saving user data to Firebase", Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }
-
-    private void handleFacebookAccessToken(AccessToken token) {
-        AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
-        FirebaseAuth.getInstance().signInWithCredential(credential)
-                .addOnCompleteListener(this, task -> {
-                    if (task.isSuccessful()) {
-                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                        Intent intent = new Intent(LoginActivity.this, NavigationActivity.class);
-                        startActivity(intent);
-                        finish();
-                    } else {
-                        Toast.makeText(LoginActivity.this, "Authentication Failed.", Toast.LENGTH_SHORT).show();
                     }
                 });
     }

@@ -32,8 +32,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 }
 
@@ -55,6 +55,7 @@ dependencies {
     implementation ("com.google.firebase:firebase-auth:21.0.1")
     implementation ("com.google.firebase:firebase-database:20.2.3")    // Firebase Realtime Database
     implementation ("com.facebook.android:facebook-login:12.1.0")
+    implementation ("com.facebook.android:facebook-android-sdk:[4,5)")
 
 
     implementation(libs.appcompat)

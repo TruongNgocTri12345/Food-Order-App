@@ -5,6 +5,8 @@
     <string name="back_button">Back</string>
     <string name="default_web_client_id">770258126813-hll6tvnnuv56620v4r9mcp7t433s414k.apps.googleusercontent.com</string>
     <string name="facebook_app_id">1094353142791880</string>
+    <string name="fb_login_protocol_scheme">fb1094353142791880</string>
+    <string name="facebook_client_token">088f94f8e0945e2f5c8b9c48762525b9</string>
     <string-array name="month_array">
         <item>January</item>
         <item>February</item>
