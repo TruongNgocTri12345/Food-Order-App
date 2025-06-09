@@ -1,35 +1,37 @@
 <resources>
-    <string name="app_name">Food-Order-App</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="back_button">Back</string>
+    <string name="app_name">Ứng dụng Đặt Món Ăn</string>
+    <!-- TODO: Xóa hoặc thay đổi đoạn văn bản mẫu này -->
+    <string name="hello_blank_fragment">Xin chào, fragment trống</string>
+    <string name="back_button">Quay lại</string>
+
     <string-array name="month_array">
-        <item>January</item>
-        <item>February</item>
-        <item>March</item>
-        <item>April</item>
-        <item>May</item>
-        <item>June</item>
-        <item>July</item>
-        <item>August</item>
-        <item>September</item>
-        <item>October</item>
-        <item>November</item>
-        <item>December</item>
+        <item>Tháng Một</item>
+        <item>Tháng Hai</item>
+        <item>Tháng Ba</item>
+        <item>Tháng Tư</item>
+        <item>Tháng Năm</item>
+        <item>Tháng Sáu</item>
+        <item>Tháng Bảy</item>
+        <item>Tháng Tám</item>
+        <item>Tháng Chín</item>
+        <item>Tháng Mười</item>
+        <item>Tháng Mười Một</item>
+        <item>Tháng Mười Hai</item>
     </string-array>
+
     <string-array name="food_categories">
         <item>Burger</item>
         <item>Pizza</item>
-        <item>Dishes</item>
-        <item>Dessert</item>
-        <item>Drinks</item>
-    </string-array>
-    <string-array name="order_status_array">
-        <item>All</item>
-        <item>Cancelled</item>
-        <item>Waiting</item>
-        <item>Success</item>
-        <item>New</item>
+        <item>Món Ăn</item>
+        <item>Tráng Miệng</item>
+        <item>Đồ Uống</item>
     </string-array>
 
+    <string-array name="order_status_array">
+        <item>Tất cả</item>
+        <item>Đã hủy</item>
+        <item>Đang chờ</item>
+        <item>Thành công</item>
+        <item>Mới</item>
+    </string-array>
 </resources>
